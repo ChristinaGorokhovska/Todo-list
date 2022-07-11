@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <title>To do list</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <div class="todo">
+          <div class="todo__title">Your task`s notebook</div>
+          <div class="input">
+            <input type="text" id="input" placeholder="Enter task" />
+            <button class="add-btn">Add</button>
+          </div>
+          <div class="todo__todo-list">
+            <h2>Your tasks</h2>
+            <ul class="todo-items"></ul>
+          </div>
+          <button class="delete-all">Clear all</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay">
+      <div class="modal" id="modal">
+        <h2>Edit task</h2>
+        <form action="">
+          <div class="input inputEdit">
+            <input type="text" id="inputEdit" placeholder="Enter task" />
+            <button type="button" class="edit-btn">Edit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="./js/index.js"></script>
+  <script src="./js/popup.js"></script>
+</html>

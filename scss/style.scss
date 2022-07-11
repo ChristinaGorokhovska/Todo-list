@@ -1,0 +1,222 @@
+@import "../scss/normalize";
+@import "../fonts/fonts";
+@import "../scss/settings";
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: $lightBlack;
+}
+
+body {
+  background-color: #74ebd5;
+  background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);
+}
+
+.main {
+  height: 100%;
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  margin-top: 36px;
+  //width: 70%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  input {
+    max-width: 500px;
+    //width: 500px;
+    border-radius: 10px;
+    border: none;
+    padding: 16px 20px;
+    font-size: em(20);
+    background-color: white;
+  }
+}
+
+.add-btn,
+.edit-btn {
+  background-color: $purple;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: em(20);
+  color: white;
+  margin-left: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+  padding: 20px;
+  //background-color: rgb(194, 202, 202);
+  //border-radius: 20px;
+  margin-top: 60px;
+
+  .input {
+    margin-top: 36px;
+    width: 70%;
+  }
+
+  &__title {
+    font-size: em(28);
+  }
+
+  &__todo-list {
+    margin-top: 54px;
+    background-color: white;
+    width: 70%;
+    padding: 30px;
+    border-radius: 10px;
+    h2 {
+      font-size: em(20);
+      font-weight: 400;
+      margin: 0;
+      text-align: center;
+      color: $lightGrey;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 16px;
+        display: flex;
+        //justify-content: space-between;
+        align-items: center;
+        font-size: em(20);
+
+        p {
+          width: 100%;
+          padding: 20px 20px 20px 30px;
+          margin: 0;
+        }
+
+        input[type="checkbox"] {
+          width: 30px;
+          height: 30px;
+        }
+
+        img {
+          box-sizing: content-box;
+          width: 24px;
+          height: 24px;
+          margin-right: 10px;
+          padding: 3px;
+
+          &:hover {
+            border-radius: 10px;
+
+            background-color: rgba(0, 81, 255, 0.325);
+          }
+
+          &[alt="delete"] {
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            padding: 0px;
+
+            &:hover {
+              background-color: rgba(255, 0, 93, 0.327);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .delete-all {
+    padding: 12px 24px;
+    font-size: em(20);
+    background-color: $purple;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    margin-top: -15px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+// Popup
+.modal {
+  max-width: 700px;
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+  z-index: 100;
+
+  h2 {
+    font-size: em(20);
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 0;
+  }
+
+  form {
+    .input {
+      background-color: white;
+
+      input {
+        background-color: $lightGrey;
+      }
+    }
+  }
+
+  &.active {
+    transform: translate(-50%, -50%) scale(1);
+    transition: 0.5s all;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(213, 151, 202, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s all;
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s all;
+    z-index: 100;
+  }
+}
+
+// Message box
+.msgBox {
+  font-size: em(16);
+  color: red;
+  margin: 0;
+  margin: 8px 0 0 16px;
+}

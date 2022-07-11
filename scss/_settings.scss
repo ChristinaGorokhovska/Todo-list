@@ -1,0 +1,28 @@
+$lightGrey: #c4c4c4;
+$lightBlack: #565456;
+$purple: #ff1bdd;
+
+$maxWidthContainer: 1920;
+
+// Functions
+@function rem($px) {
+  @return #{$px / 16}rem;
+}
+
+@function em($px, $base: 16) {
+  @return #{$px / $base}em;
+}
+
+@function prc($px, $needPrc) {
+  @return #{($px * $needPrc) / 100}px;
+}
+
+@function lh($fz, $px) {
+  @return #{$px / $fz};
+}
+
+// Mixins
+@mixin adaptiv-val($property, $currSize, $minSize) {
+  $addSize: $currSize - $minSize;
+  #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+}
