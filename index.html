@@ -9,6 +9,14 @@
   </head>
   <body>
     <div class="main">
+      <div class="switch-mode">
+        <img src="./img/moon.svg" alt="moon" />
+        <label class="switch">
+          <input id="slider" onchange="toogleTheme()" type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+
       <div class="container">
         <div class="todo">
           <div class="todo__title">Your task`s notebook</div>
@@ -37,6 +45,7 @@
       </div>
     </div>
   </body>
+  <script src="./js/theme.js"></script>
   <script src="./js/index.js"></script>
   <script src="./js/popup.js"></script>
 </html>
