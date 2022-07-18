@@ -1,0 +1,116 @@
+@media screen and (max-width: 760px) {
+  .todo__todo-list {
+    margin-top: 36px;
+    ul li {
+      padding: 0;
+      p {
+        padding: 20px;
+      }
+    }
+  }
+  .modal {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .add-btn,
+  .edit-btn {
+    padding: 6px 12px;
+    font-size: rem(18);
+  }
+
+  .todo .delete-all {
+    padding: 8px 16px;
+    font-size: rem(18);
+  }
+
+  .input input {
+    font-size: rem(18);
+  }
+
+  .todo__todo-list ul li {
+    margin: 0;
+    p {
+      font-size: rem(18);
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .todo {
+    margin-top: 36px;
+    &__todo-list {
+      width: 90%;
+    }
+    .input {
+      width: 90%;
+    }
+  }
+
+  .modal {
+    padding: 24px;
+    .input {
+      margin-top: 24px;
+    }
+  }
+}
+
+@media screen and (max-width: 391px) {
+  .todo__title {
+    font-size: rem(24);
+  }
+  .todo,
+  .todo .input {
+    margin-top: 32px;
+  }
+
+  .todo__todo-list {
+    padding: 20px;
+  }
+
+  .input input {
+    padding: 12px 16px;
+  }
+
+  .todo__todo-list ul li {
+    img {
+      margin: 0;
+      width: 20px;
+      height: 20px;
+
+      &[alt="delete"] {
+        width: 26px;
+        height: 26pxpx;
+      }
+    }
+    p {
+      padding: 16px;
+      font-size: rem(16);
+    }
+  }
+
+  .todo__todo-list ul {
+    margin: 8px 0;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .todo__title {
+    font-size: rem(20);
+  }
+
+  .add-btn,
+  .edit-btn {
+    padding: 4px 6px;
+    font-size: rem(16);
+  }
+  .input input {
+    padding: 8px 12px;
+    font-size: rem(16);
+  }
+  .todo .delete-all {
+    padding: 4px 8px;
+    font-size: rem(16);
+  }
+}

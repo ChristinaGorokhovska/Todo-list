@@ -33,7 +33,7 @@ body {
   grid-template-columns: 1fr auto;
   input {
     max-width: 500px;
-    //width: 500px;
+    width: 100%;
     border-radius: 10px;
     border: none;
     padding: 16px 20px;
@@ -64,7 +64,7 @@ body {
   align-items: center;
   max-width: 900px;
   width: 100%;
-  padding: 20px;
+  padding: 0 20px;
   //background-color: rgb(194, 202, 202);
   //border-radius: 20px;
   margin-top: 60px;
@@ -179,6 +179,7 @@ body {
     text-align: center;
     display: block;
     margin: 0;
+    font-weight: 500;
   }
 
   form {
@@ -203,7 +204,7 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(213, 151, 202, 0.5);
+  background-color: rgba(151, 121, 145, 0.799);
   opacity: 0;
   pointer-events: none;
   transition: 0.5s all;
@@ -317,3 +318,5 @@ input:checked + .slider:before {
     }
   }
 }
+
+@import "../scss/media";
