@@ -5,7 +5,7 @@ const todoItems = document.querySelector(".todo-items");
 const deleteAllBtn = document.querySelector(".delete-all");
 
 // Display previous tasks
-displayToDoList();
+renderToDoList();
 
 // Add task
 function addTask(task) {
@@ -27,36 +27,40 @@ function addTask(task) {
 }
 
 // Edit task
-function editTask(id, taskValue) {
+function openEditModal(id, taskValue) {
+  console.log("id:", id, "taskValue:", taskValue);
   const modal = document.querySelector("#modal");
   openModal(modal, taskValue);
 
-  document.querySelector(".edit-btn").addEventListener("click", () => {
-    if (document.querySelector(".msgBox")) {
-      document.querySelector(".inputEdit").removeChild(document.querySelector(".msgBox"));
-    }
+  document.querySelector(".edit-btn").setAttribute("data-id", id);
+}
 
-    if (checkIfEmpty(inputEdit)) {
-      const newTaskValue = modal.querySelector("input").value.trim();
+function editTask() {
+  const idValue = document.querySelector(".edit-btn").getAttribute("data-id");
+  if (document.querySelector(".msgBox")) {
+    document.querySelector(".inputEdit").removeChild(document.querySelector(".msgBox"));
+  }
 
-      let todoList = JSON.parse(localStorage.getItem("todoList"));
-      const index = todoList.findIndex(function (obj) {
-        return obj.id == id;
-      });
+  if (checkIfEmpty(inputEdit)) {
+    const newTaskValue = modal.querySelector("input").value.trim();
 
-      todoList[index].val = newTaskValue;
-      localStorage.setItem("todoList", JSON.stringify(todoList));
+    let todoList = JSON.parse(localStorage.getItem("todoList"));
+    const index = todoList.findIndex(function (obj) {
+      return obj.id == idValue;
+    });
 
-      closeModal(modal);
-      displayToDoList();
-    } else {
-      let msgElement = document.createElement("p");
-      msgElement.classList = "msgBox";
-      msgElement.innerHTML = `Can not add empty task`;
+    todoList[index].val = newTaskValue;
+    localStorage.setItem("todoList", JSON.stringify(todoList));
 
-      document.querySelector(".inputEdit").appendChild(msgElement);
-    }
-  });
+    closeModal(modal);
+    renderToDoList();
+  } else {
+    let msgElement = document.createElement("p");
+    msgElement.classList = "msgBox";
+    msgElement.innerHTML = `Can not add empty task`;
+
+    document.querySelector(".inputEdit").appendChild(msgElement);
+  }
 }
 
 // Delete task
@@ -71,7 +75,7 @@ function deleteTask(id) {
   );
 
   localStorage.setItem("todoList", JSON.stringify(todoList));
-  displayToDoList();
+  renderToDoList();
 }
 
 // Delete all
@@ -80,19 +84,17 @@ function deleteAll() {
 }
 
 // Display all tasks
-function displayToDoList() {
+function renderToDoList() {
   if (localStorage.getItem("todoList") != null && JSON.parse(localStorage.getItem("todoList")).length > 0) {
     let todoList = JSON.parse(localStorage.getItem("todoList"));
     todoItems.innerHTML = "";
 
     todoList.forEach((item) => {
-      todoItems.innerHTML += `<li><input id="${item.id}" type="checkbox" ${
-        item.checkBox ? "checked" : ""
-      } onclick="checkBoxSelection(${item.id})"><span></span><p>${
-        item.val
-      }</p><img class="edit" data-modal-target="#modal" onclick="editTask(${item.id}, '${
-        item.val
-      }')" src="./img/pencil.svg" alt="edit"><img class="delete" data-delete="${item.id}" onclick="deleteTask(${
+      todoItems.innerHTML += `<li><input type="checkbox" ${item.checkBox ? "checked" : ""} onclick="checkBoxSelection(${
+        item.id
+      })"><span></span><p>${item.val}</p><img class="edit" data-modal-target="#modal" onclick="openEditModal(${
+        item.id
+      }, '${item.val}')" src="./img/pencil.svg" alt="edit"><img class="delete" onclick="deleteTask(${
         item.id
       })" src="./img/bin.svg" alt="delete"></li>`;
     });
@@ -114,7 +116,7 @@ function checkBoxSelection(id) {
   todoList[index].checkBox = document.getElementById(`${id}`).checked;
 
   localStorage.setItem("todoList", JSON.stringify(todoList));
-  displayToDoList();
+  renderToDoList();
 }
 
 // Check if input is empty
@@ -130,7 +132,7 @@ addBtn.addEventListener("click", () => {
 
   if (checkIfEmpty(input)) {
     addTask(input.value);
-    displayToDoList();
+    renderToDoList();
   } else {
     let msgElement = document.createElement("p");
     msgElement.classList = "msgBox";
@@ -143,8 +145,5 @@ addBtn.addEventListener("click", () => {
 // On click delete all
 deleteAllBtn.addEventListener("click", () => {
   deleteAll();
-  displayToDoList();
+  renderToDoList();
 });
-
-// TO DO
-//
